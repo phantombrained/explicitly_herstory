@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explicitly Herstory | Crisanchai Crisostomo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+    :root {
+      --baby-pink: #fff5f8;
+      --coquette-pink: #fbc6d3;
+      --soft-yellow: #fff9e6;
+      --deep-pink: #d81b60;
+      --text-main: #3d2c31;
+      --text-muted: #7d656b;
+      --accent-pink: #f7a0b8;
+      --shadow: 0 18px 40px rgba(247, 160, 184, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      background: linear-gradient(135deg, var(--soft-yellow) 0%, #fff 50%, var(--baby-pink) 100%);
+      min-height: 100vh;
+    }
+
+    .page { width: min(1140px, 92%); margin: 0 auto; padding: 40px 0 80px; }
+
+    /* TITLE GRADIENT */
+    .gradient-header {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-style: italic;
+      line-height: 0.9;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #f7a0b8, #ffcc33);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+    }
+
+    .hero {
+      position: relative; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px;
+      padding: 60px 46px; border-radius: 40px; border: 1px solid var(--coquette-pink);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow); margin-bottom: 40px;
+    }
+
+    .hero-sub { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; max-width: 650px; font-weight: 600; }
+
+    /* CATALOG CARDS GRID */
+    .catalog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .catalog-card { 
+      background: #fff; padding: 20px; border-radius: 20px; border: 1px solid var(--coquette-pink);
+      box-shadow: 0 8px 20px rgba(247, 160, 184, 0.08); transition: 0.3s;
+    }
+    .catalog-card:hover { transform: translateY(-3px); border-color: #ffcc33; }
+    .catalog-card h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-pink); margin-bottom: 8px; }
+    .catalog-card p { font-size: 0.9rem; font-weight: 800; color: var(--text-main); line-height: 1.3; }
+
+    /* FEATURE LAYOUT */
+    .feature-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 35px; align-items: start; margin-top: 40px; }
+    
+    .photo-card {
+      background: #fff; border: 1px solid var(--coquette-pink); border-radius: 35px; padding: 20px; box-shadow: var(--shadow);
+    }
+    .feature-photo { width: 100%; height: auto; border-radius: 25px; margin-bottom: 20px; }
+    
+    .info-list { background: var(--baby-pink); border-radius: 20px; padding: 20px; border: 1px dashed var(--accent-pink); }
+    .info-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(247, 160, 184, 0.2); }
+    .info-item:last-child { border: none; }
+    .info-label { font-weight: 800; font-size: 0.8rem; color: var(--accent-pink); }
+    .info-value { font-weight: 700; font-size: 0.9rem; }
+
+    /* STORY BOX */
+    .panel { background: #fff; border: 1px solid var(--coquette-pink); border-radius: 30px; padding: 40px; box-shadow: var(--shadow); }
+    .story-title { font-family: 'Instrument Serif', serif; font-size: 2.5rem; color: var(--deep-pink); margin-bottom: 15px; }
+    .story-text { font-size: 1.05rem; color: var(--text-muted); font-weight: 600; white-space: pre-line; }
+
+    /* INTERVIEW QA */
+    .interview-section { margin-top: 60px; }
+    .qa-box { margin-bottom: 40px; padding-left: 25px; border-left: 4px solid var(--coquette-pink); position: relative; }
+    .question { font-size: 1.15rem; font-weight: 800; color: var(--deep-pink); margin-bottom: 15px; }
+    .answer { font-size: 1.05rem; color: var(--text-main); font-weight: 500; font-style: italic; line-height: 1.8; }
+
+    /* IMPACT CARDS (Bottom) */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }
+    .impact-card { 
+      padding: 35px; border-radius: 30px; border: 1px solid var(--coquette-pink); box-shadow: var(--shadow);
+    }
+    .impact-card.pink { background: #fff5f8; }
+    .impact-card.yellow { background: #fffdf5; }
+    
+    .impact-card h4 { font-size: 1.3rem; margin-bottom: 12px; font-weight: 800; }
+    .impact-card p { font-size: 0.95rem; color: var(--text-muted); font-weight: 600; }
+
+    footer { text-align: center; margin-top: 80px; padding: 20px; color: var(--text-muted); font-size: 0.9rem; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .hero, .feature-layout, .impact-grid { grid-template-columns: 1fr; }
+      .catalog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="gradient-header">Explicitly Herstory</h1>
+        <p class="hero-sub">Introducing <strong>Crisanchai Crisostomo</strong>: A powerhouse in the tech landscape at PUP San Pedro. This edition celebrates a leader who balances grace with technical mastery.</p>
+        
+        <div class="catalog-grid">
+          <div class="catalog-card">
+            <h4>Recognition</h4>
+            <p>𝟭𝘀𝘁 𝗥𝘂𝗻𝗻𝗲𝗿 𝗨𝗽<br>Ms. PUPSPC 2024</p>
+          </div>
+          <div class="catalog-card">
+            <h4>Hackathon Win</h4>
+            <p>𝟭𝘀𝘁 𝗿𝘂𝗻𝗻𝗲𝗿 𝘂𝗽<br>GDG Sparkfest 2025 ✨💙</p>
+          </div>
+          <div class="catalog-card">
+            <h4>Hackathon Win</h4>
+            <p>𝘾𝙝𝙖𝙢𝙥𝙞𝙤𝙣<br>FEU Create & Conquer 2025 🖤💙</p>
+          </div>
+          <div class="catalog-card">
+            <h4>Personal Quote</h4>
+            <p>"I Have The Means"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="panel" style="background: var(--baby-pink); height: 100%; border-style: dashed;">
+          <h3 style="font-family: 'Instrument Serif', serif; font-size: 2rem; margin-bottom: 15px;">Why Ate Chai?</h3>
+          <p style="font-weight: 600; color: var(--text-muted);">Ate Chai was chosen for this feature because she represents the "Total Package" of a modern woman in tech. From winning national hackathons to representing our school in pageantry, she proves that you don't have to choose between technical skill and personal advocacy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-layout" id="story">
+      <div class="photo-card">
+        <img class="feature-photo" src="assets/picture1.png" alt="Crisanchai Crisostomo">
+        <div class="info-list">
+          <div class="info-item"><span class="info-label">Program</span><span class="info-value">PUP-BSIT Alumna</span></div>
+          <div class="info-item"><span class="info-label">Identity</span><span class="info-value">"Ate Chai"</span></div>
+          <div class="info-item"><span class="info-label">Organizations</span><span class="info-value">EXPLICIT, GDG</span></div>
+          <div class="info-item"><span class="info-label">Advocacy</span><span class="info-value">Women Empowerment</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="story-title">Beauty, Brains, and Binary</h2>
+        <div class="story-text">Crisanchai "Ate Chai" Crisostomo is a defining figure in the PUP San Pedro BSIT community. As the 1st Runner-Up in the 13th Quest for Excellence, she proved that technical wit and grace are a powerful combination. 
+
+Beyond the stage, Ate Chai is a seasoned emcee and a tireless competitor. Alongside her team, she has consistently pushed the boundaries of innovation, notably securing 𝟭𝘀𝘁 𝗿𝘂𝗻𝗻𝗲𝗿 𝘂𝗽 at the 𝗚𝗗𝗚 𝗦𝗽𝗮𝗿𝗸𝗳𝗲𝘀𝘁 𝗛𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻 𝟮𝟬𝟮𝟱 and emerging as a 𝘾𝙝𝙖𝙢𝙥𝙞𝙤𝙣 at the 𝙁𝙀𝙐 𝘾𝙧𝙚𝙖𝙩𝙚 & 𝘾𝙤𝙣𝙦𝙪𝙚𝙧 2025 𝙃𝙖𝙘𝙠𝙖𝙩𝙝𝙤𝙣.
+
+Her journey as a former working student balanced with high-stakes technical victories reflects a woman of brilliance and true resilience.</div>
+      </div>
+    </section>
+
+    <section class="interview-section">
+      <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px;">In Her Own Words</h2>
+
+      <div class="panel">
+        <div class="qa-box">
+          <p class="question">1. What drew you to pursue a career and degree in tech and how was your experience studying IT?</p>
+          <p class="answer">"What drew me to pursue a degree and career in technology was my curiosity about how technology will shape our world in the future. I was also interested in the wide range of career opportunities that the field of IT offers. My experience studying IT was both challenging and rewarding. My first year in college happened during the pandemic, so most of our classes were conducted online, which made the experience quite different from the usual college setup. Despite that, I still found opportunities to grow by joining our organization, EXPLICIT, and participating in different activities. In my final year, I became more active in joining hackathons, competitions and pageantry, which helped me gain valuable experiences."</p>
+        </div>
+
+        <div class="qa-box">
+          <p class="q question">2. What are the challenges you have faced as a woman in IT?</p>
+          <p class="a answer">"One of the challenges of being a woman in IT is that the field is still often seen as male-dominated. Even now in my workplace, there are five Web Specialists on the team and I am the only woman, so there are moments where it can feel intimidating. However, these experiences helped shape me to become more confident in my skills and voice my ideas. Being involved in organizations and competitions during college also helped me prove to myself that I belong in this field. These experiences motivated me to keep improving my technical knowledge and communication skills, and instead of seeing it as a limitation, I see it as an opportunity to represent women in tech and inspire others to pursue the same path."</p>
+        </div>
+
+        <div class="qa-box">
+          <p class="q question">3. How did you balance work, studies, and competitions?</p>
+          <p class="a answer">"Balancing it all at once was definitely challenging. I actually started working during my first year of college, and it helped me support myself, my family, and save money. In my final year, I decided to stop working so I could focus on my studies, our capstone project, internship, and fully enjoy my last year in college. Because of that decision, I was able to become more active in our organization, join hackathons and competitions, and even participate in pageantry—experiences I never imagined I would have. One important lesson I learned is that while it is possible to juggle many responsibilities, it is also important to rest and take care of yourself."</p>
+        </div>
+
+        <div class="qa-box">
+          <p class="q question">4. What is your message to other women in tech?</p>
+          <p class="a answer">"My message is to believe in your potential and not be afraid to take space in this field. When I participated in the PUP pageant, my advocacy was Women Empowerment because I believe women have the ability to lead, innovate, and make meaningful contributions in fields like technology that are often seen as male-dominated. This belief is also reflected in my personal motto, 'I have the means.' It reminds me that I already possess the confidence, skills, and determination needed to grow and succeed. For me, it is a simple reminder that success is possible when you make the most of the opportunities and abilities you already have."</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-grid">
+      <div class="impact-card pink">
+        <h4>Impactful Recognition</h4>
+        <p>Celebrating women like Ate Chai creates a roadmap for younger students to follow, proving that technical mastery and leadership can coexist beautifully.</p>
+      </div>
+      <div class="impact-card yellow">
+        <h4>Resilience in Action</h4>
+        <p>From hackathon champion to working student, her journey shows how dedication and grit shape the next generation of industry leaders.</p>
+      </div>
+      <div class="impact-card pink">
+        <h4>The Personal Voice</h4>
+        <p>This interview gives our community a direct link to the wisdom of an alumna who has navigated the challenges of IT with grace.</p>
+      </div>
+    </section>
+
+    <div class="panel" style="margin-top: 40px; background: linear-gradient(90deg, var(--soft-yellow), var(--baby-pink)); text-align: center;">
+      <h2 style="font-size: 2rem; margin-bottom: 10px;">Aligned with SDG 5: Gender Equality</h2>
+      <p style="font-weight: 600; color: var(--text-muted); max-width: 800px; margin: 0 auto;">By promoting the visibility and empowerment of women in technology, we directly support the global goal of equal opportunity and innovation in the tech community.</p>
+    </div>
+
+    <footer>
+      <p>Explicitly Herstory • 2026 • Celebrating Women in Tech</p>
+    </footer>
+  </main>
+
+</body>
+</html>
